@@ -24,19 +24,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
+app.get("/facts", (req, res) => {
   requestsCount++;
   res
     .status(200)
     .send({ data: facts[Math.floor(Math.random() * facts.length)] });
 });
 
-app.get("/all", (req, res) => {
+app.get("/facts/all", (req, res) => {
   res.status(200).send({ data: facts });
-});
-
-app.get("/requestsCount", (req, res) => {
-  res.status(200).send({ data: { requestsCount } });
 });
 
 app.get("/facts/:id", (req, res) => {
@@ -46,6 +42,15 @@ app.get("/facts/:id", (req, res) => {
   } else {
     res.status(400).send({ data: FACT_NOT_FOUND });
   }
+});
+
+app.post("/facts/add", (req, res) => {
+  requestsCount++;
+  req.body.data !== "" ? res.sendStatus(200) : res.sendStatus(400);
+});
+
+app.get("/requestsCount", (req, res) => {
+  res.status(200).send({ data: { requestsCount } });
 });
 
 const server = app.listen(process.env.PORT || 5000, function () {
