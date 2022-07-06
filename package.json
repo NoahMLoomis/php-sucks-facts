@@ -1,0 +1,32 @@
+{
+  "name": "php-sucks-facts",
+  "version": "1.0.0",
+  "description": "A blazingly fast api that gives you a random reason why php sucks",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoahMLoomis/php-sucks-facts.git"
+  },
+  "keywords": [
+    "php",
+    "sucks"
+  ],
+  "author": "Noah Loomis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NoahMLoomis/php-sucks-facts/issues"
+  },
+  "homepage": "https://github.com/NoahMLoomis/php-sucks-facts#readme",
+  "devDependencies": {
+    "eslint": "^8.19.0"
+  }
+}
