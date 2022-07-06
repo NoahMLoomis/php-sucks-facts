@@ -21,5 +21,5 @@ npm start
 
 ### Dedication and Inspiration
 This was inspired by 2 things:
-  - [MeowFacts]("https://github.com/wh-iterabb-it/meowfacts")
+  - [MeowFacts](https://github.com/wh-iterabb-it/meowfacts)
   - My hate for PHP
