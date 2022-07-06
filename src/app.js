@@ -3,7 +3,6 @@ const { facts } = require("./data/facts");
 const express = require("express");
 const port = 3000;
 const fs = require("fs");
-const path = require("path");
 const morgan = require("morgan");
 const favicon = require("serve-favicon");
 const app = express();
@@ -16,10 +15,10 @@ app.use(favicon(`${__dirname}/public/images/favicon.ico`));
 
 app.use(bodyParser.json());
 
-// var logStream = fs.createWriteStream(path.join(__dirname, "./log/access.log"), {
-  // flags: "a",
-// });
-// app.use(morgan("combined", { stream: logStream }));
+var logStream = fs.createWriteStream(`${__dirname}/log/access.log`, {
+  flags: "a",
+});
+app.use(morgan("combined", { stream: logStream }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
