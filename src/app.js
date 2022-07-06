@@ -16,10 +16,10 @@ app.use(favicon(`${__dirname}/public/images/favicon.ico`));
 
 app.use(bodyParser.json());
 
-var logStream = fs.createWriteStream(path.join(__dirname, "./log/access.log"), {
-  flags: "a",
-});
-app.use(morgan("combined", { stream: logStream }));
+// var logStream = fs.createWriteStream(path.join(__dirname, "./log/access.log"), {
+  // flags: "a",
+// });
+// app.use(morgan("combined", { stream: logStream }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
