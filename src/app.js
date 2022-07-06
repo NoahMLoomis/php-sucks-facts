@@ -3,7 +3,6 @@ const { facts } = require("./data/facts");
 const express = require("express");
 const port = 3000;
 const fs = require("fs");
-const morgan = require("morgan");
 const favicon = require("serve-favicon");
 const app = express();
 const FACT_NOT_FOUND = `Fact not found, number must be between 0-${
@@ -14,11 +13,6 @@ let requestsCount = 0;
 app.use(favicon(`${__dirname}/public/images/favicon.ico`));
 
 app.use(bodyParser.json());
-
-var logStream = fs.createWriteStream(`${__dirname}/log/access.log`, {
-  flags: "a",
-});
-app.use(morgan("combined", { stream: logStream }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
