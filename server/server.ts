@@ -1,6 +1,7 @@
 import bodyParser = require("body-parser");
 import dotenv = require("dotenv");
 import express = require("express");
+import path = require("path");
 const app = express();
 import {
   getAllFacts,
@@ -8,7 +9,7 @@ import {
   getFactByIndex,
   addFact,
 } from "../db/mongoclient";
-const FACT_NOT_FOUND = "Fact not found"
+const FACT_NOT_FOUND = "Fact not found";
 
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
@@ -16,6 +17,12 @@ if (process.env.NODE_ENV !== "production") {
 
 let requestsCount = 0;
 app.use(bodyParser.json());
+
+app.use(express.static(path.resolve(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+})
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -50,12 +57,12 @@ app.post("/facts/add", async (req, res) => {
   if (!req.body.data) {
     res.sendStatus(400);
   } else {
-    const status = await addFact(req.body.data)
-    console.log(`status: ${status}`)
+    const status = await addFact(req.body.data);
+    console.log(`status: ${status}`);
     if (status === null) {
-      res.sendStatus(400)
-    }else {
-      res.sendStatus(200)
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(200);
     }
   }
 });
