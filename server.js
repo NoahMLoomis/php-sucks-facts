@@ -1,14 +1,15 @@
-import bodyParser = require("body-parser");
-import dotenv = require("dotenv");
-import express = require("express");
-import path = require("path");
+/* eslint-disable no-undef */
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+const express = require("express");
+const path = require("path");
 const app = express();
-import {
+const {
   getAllFacts,
   getRandomFact,
   getFactByIndex,
   addFact,
-} from "../db/mongoclient";
+} = require("./db/mongoclient");
 const FACT_NOT_FOUND = "Fact not found";
 
 if (process.env.NODE_ENV !== "production") {
@@ -18,11 +19,11 @@ if (process.env.NODE_ENV !== "production") {
 let requestsCount = 0;
 app.use(bodyParser.json());
 
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-})
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

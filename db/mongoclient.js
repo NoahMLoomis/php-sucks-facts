@@ -1,11 +1,11 @@
-import { MongoClient } from "mongodb";
+const { MongoClient } = require("mongodb");
 
 const getClient = async () =>
   await new MongoClient(
     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.7aann67.mongodb.net/?retryWrites=true&w=majority`
   ).connect();
 
-const getAllFacts = async (): Promise<string[]> =>
+const getAllFacts = async () =>
   (
     await (await getClient())
       .db("phpsucksfacts")
@@ -14,7 +14,7 @@ const getAllFacts = async (): Promise<string[]> =>
       .toArray()
   ).map((d) => d.fact);
 
-const getRandomFact = async (): Promise<string> => {
+const getRandomFact = async () => {
   const randFact = (await getClient())
     .db("phpsucksfacts")
     .collection("facts")
@@ -24,14 +24,14 @@ const getRandomFact = async (): Promise<string> => {
   return (await randFact)[0].fact;
 };
 
-const getFactByIndex = async (index: number): Promise<string> =>
+const getFactByIndex = async (index) =>
   (await getAllFacts())[index];
 
-const addFact = async (reason: string) => {
+const addFact = async (reason) => {
   return (await (await getClient())
     .db("phpsucksfacts")
     .collection("facts")
     .insertOne({ fact: reason })).insertedId;
 };
 
-export { getAllFacts, getRandomFact, getFactByIndex, addFact };
+module.export = { getAllFacts, getRandomFact, getFactByIndex, addFact };
