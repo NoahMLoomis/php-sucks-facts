@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const express = require("express");
@@ -8,8 +9,8 @@ const {
   getAllFacts,
   getRandomFact,
   getFactByIndex,
-  addFact,
-} = require("./db/mongoclient");
+  // addFact,
+} = require("./mongoclient");
 const FACT_NOT_FOUND = "Fact not found";
 
 if (process.env.NODE_ENV !== "production") {
@@ -21,9 +22,22 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
+const getClient = async () =>
+  await new MongoClient(
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.7aann67.mongodb.net/?retryWrites=true&w=majority`
+  )
+    .connect()
+    .then(() => console.log("DB connected"))
+    .catch((e) => console.log(`Could not connect to DB: ${e}`));
+
+const addFact = async (reason) => {
+  return (
+    await (await getClient())
+      .db("phpsucksfacts")
+      .collection("facts")
+      .insertOne({ fact: reason })
+  ).insertedId;
+};
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
