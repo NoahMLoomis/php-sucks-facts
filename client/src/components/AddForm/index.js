@@ -7,9 +7,6 @@ const AddForm = () => {
   const [displaySuccess, setDisplaySuccess] = useState(false);
   const [displayError, setDisplayError] = useState(false);
   const [newReason, setNewReason] = useState("");
-
-  axios.get("/facts").then((d) => console.log(d));
-
   return (
     <>
       <Grid
