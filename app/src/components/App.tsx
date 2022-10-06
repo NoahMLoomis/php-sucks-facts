@@ -1,5 +1,6 @@
-import Modal from "./Modal";
 import Footer from "./Footer";
+import Router from "./Router";
+import Menu from "./Menu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -8,7 +9,7 @@ function App() {
     <div>
       <div className="bg-gradient-to-r from-purple-500 to-pink-500">
         <div className="flex h-screen">
-          <Modal />
+          <Router />
           <Footer />
         </div>
         <ToastContainer

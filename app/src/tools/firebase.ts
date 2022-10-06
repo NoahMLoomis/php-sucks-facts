@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, push, onChildAdded } from "firebase/database";
+import { doc, getDoc } from "firebase/firestore";
 
 const app = initializeApp({
   databaseURL: "https://fir-test-a2f7f-default-rtdb.firebaseio.com/",
