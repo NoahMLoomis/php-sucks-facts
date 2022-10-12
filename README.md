@@ -2,7 +2,9 @@
 
 ### Description:
 
-This blazingly fast app will give you reasons why php sucks! 🔥🔥🔥.
+This blazingly fast app will give you reasons why php sucks! 🔥🔥🔥
+
+Deployed with Vercel CLI 🔥 https://php-sucks.vercel.app/
 
 ### Documentation:
 There is none
@@ -13,7 +15,6 @@ npm install
 ```
 ### Example Usage
 
-Basic usage
 ```
 npm start
 ```
@@ -22,6 +23,7 @@ npm start
  - React TS + Vite
  - Tailwind
  - Firebase
+ - Deployed with Vercel CLI
 
 
 ### Dedication and Inspiration
