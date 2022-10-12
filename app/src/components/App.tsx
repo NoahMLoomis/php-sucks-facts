@@ -1,6 +1,5 @@
 import Footer from "./Footer";
 import Router from "./Router";
-import Menu from "./Menu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

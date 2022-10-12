@@ -42,6 +42,7 @@ const Modal = () => {
       } else {
         if (await addReason(reason.current.value)) {
           toast.success("Reason added", toastProps);
+          reason.current.value = "";
         } else {
           toast.error("Couldn't add reason");
         }
