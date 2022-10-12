@@ -5,8 +5,7 @@
 This blazingly fast app will give you reasons why php sucks! 🔥🔥🔥.
 
 ### Documentation:
-Want an API doc with Swagger? You aren't getting one.
-
+There is none
 
 ### Installation
 ```
@@ -18,6 +17,12 @@ Basic usage
 ```
 npm start
 ```
+
+### Stack:
+ - React TS + Vite
+ - Tailwind
+ - Firebase
+
 
 ### Dedication and Inspiration
 This was inspired by 2 things:
