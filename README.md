@@ -16,7 +16,7 @@ npm install
 ### Example Usage
 
 ```
-npm start
+npm run dev
 ```
 
 ### Stack:
