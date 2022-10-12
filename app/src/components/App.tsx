@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>
-      <div className="bg-gradient-to-r from-purple-500 to-pink-500">
-        <div className="flex h-screen">
+      <div className="bg-gradient-to-r from-purple-500 to-pink-500 ">
+        <div className="flex min-h-screen">
           <Router />
           <Footer />
         </div>

@@ -11,6 +11,6 @@
         cursor-pointer shadow-lg;
   }
   .content-area {
-    @apply bg-white shadow-xl rounded my-auto mx-10 px-8 pt-8 pb-8 w-screen h-min;
+    @apply bg-white shadow-xl rounded my-auto mx-10 px-8 pt-8 pb-8 w-screen h-max;
   }
 }

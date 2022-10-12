@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { writetoDB, reasonExists } from "../tools/firebase";
+import { addReason } from "../tools/firebase";
 import { toast, ToastOptions } from "react-toastify";
 import placeholders from "../tools/placeholders";
 
@@ -34,17 +34,17 @@ const Modal = () => {
 
   const handleClick = async () => {
     if (reason.current !== null) {
-      if (await reasonExists(reason.current.value)) {
-        toast.error("Reason already exists", toastProps);
-      } else if (reason.current.value.trim() === "") {
+      if (reason.current.value.trim() === "") {
         toast.error(
           "Really? You can't think of a reason? Think harder",
           toastProps
         );
       } else {
-        writetoDB(reason.current.value)
-          .then(() => toast.success("Reason added", toastProps))
-          .catch((e) => toast.error("Couldn't add reason"));
+        if (await addReason(reason.current.value)) {
+          toast.success("Reason added", toastProps);
+        } else {
+          toast.error("Couldn't add reason");
+        }
       }
     }
   };
