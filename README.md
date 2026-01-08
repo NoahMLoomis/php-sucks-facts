@@ -1,4 +1,4 @@
-# PHP sucks. I know it, you know it, your mom knows it 
+# PHP sucks. I know it, you know it
 
 ### Description:
 
